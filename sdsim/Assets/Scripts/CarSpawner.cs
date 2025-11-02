@@ -173,7 +173,14 @@ public class CarSpawner : MonoBehaviour
 
     public void RemoveTimer(GameObject go)
     {
-        Timer timer = getChildGameObject(go, "Timer").GetComponent<Timer>();
+        GameObject timerObj = getChildGameObject(go, "Timer");
+        if (timerObj == null)
+        {
+            Debug.LogError("failed to find Timer object");
+            return;
+        }
+        
+        Timer timer = timerObj.GetComponent<Timer>();
 
         if (timer != null && raceStatusPanel != null)
         {
@@ -436,14 +443,26 @@ public class CarSpawner : MonoBehaviour
             menuHandler.Logger = getChildGameObject(go, "Logger");
             menuHandler.NetworkSteering = getChildGameObject(go, "TCPClient");
             menuHandler.carJSControl = getChildGameObject(go, "JoyStickCarContoller");
-            menuHandler.trainingManager = getChildGameObject(go, "TrainingManager").GetComponent<TrainingManager>();
-            menuHandler.trainingManager.carObj = go;
+            
+            GameObject trainingManagerObj = getChildGameObject(go, "TrainingManager");
+            if (trainingManagerObj != null)
+            {
+                menuHandler.trainingManager = trainingManagerObj.GetComponent<TrainingManager>();
+                if (menuHandler.trainingManager != null)
+                {
+                    menuHandler.trainingManager.carObj = go;
+                }
+            }
 
-            if (EnableTrainingManager)
+            if (EnableTrainingManager && menuHandler.trainingManager != null)
             {
                 menuHandler.trainingManager.gameObject.SetActive(true);
 
-                getChildGameObject(go, "OverheadViewSphere").SetActive(true);
+                GameObject overheadViewSphere = getChildGameObject(go, "OverheadViewSphere");
+                if (overheadViewSphere != null)
+                {
+                    overheadViewSphere.SetActive(true);
+                }
             }
 
             if (GlobalState.bAutoHideSceneMenu && panelMenu != null)
