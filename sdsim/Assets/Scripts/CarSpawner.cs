@@ -181,8 +181,13 @@ public class CarSpawner : MonoBehaviour
         }
         
         Timer timer = timerObj.GetComponent<Timer>();
+        if (timer == null)
+        {
+            Debug.LogError("failed to find Timer component");
+            return;
+        }
 
-        if (timer != null && raceStatusPanel != null)
+        if (raceStatusPanel != null)
         {
             int count = raceStatusPanel.transform.childCount;
             for (int i = 0; i < count; i++)
