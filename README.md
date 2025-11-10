@@ -132,9 +132,15 @@ python predict_client.py --model=../outputs/mymodel.h5
 * [h5py](http://www.h5py.org/)  
 * [pillow](https://python-pillow.org/)  
 * [pygame](https://pypi.python.org/pypi/Pygame)**  
-* [Unity 2018.+](https://unity3d.com/get-unity/download)  
+* [Unity 2020.3+](https://unity3d.com/get-unity/download)  
 
 
 **Note: pygame only needed if using mon_and_predict_server.py which gives a live camera feed during inferencing.
+
+### Unity Version Information
+This project currently uses **Unity 2020.3.49f1 LTS**. For information about upgrading to Unity 6.0 LTS, see:
+- [Unity Upgrade Executive Summary](docs/UNITY_UPGRADE_EXECUTIVE_SUMMARY.md) - Quick decision guide
+- [Unity Upgrade Evaluation Report](docs/UNITY_UPGRADE_EVALUATION_REPORT.md) - Comprehensive 34k word analysis
+- [Unity Upgrade Migration Guide](docs/UNITY_UPGRADE_MIGRATION_GUIDE.md) - Step-by-step upgrade instructions
 
 
