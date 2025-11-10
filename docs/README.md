@@ -1,5 +1,9 @@
 # Dev documentation
 
+## troubleshooting
+Common issues and their solutions
+* [Linux HTTP REST Server Port Error (38000-38100)](troubleshooting/linux_http_port_error.md)
+
 ## guides
 Those guides are made if you want to change or tweak the simulator. <br>
 prior to reading the guides, have a look at [Get Started With Unity](../get_started_with_unity.md)

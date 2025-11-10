@@ -30,6 +30,18 @@ You need to have [Unity](https://unity3d.com/get-unity/download) installed, and 
 
 Linix Unity install [here](https://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/). Check last post in this thread.
 
+### Linux Users: Important Setup Steps
+
+If you're running on Linux, you may need to install additional SSL libraries to avoid the "Error opening a HTTP REST server port between 38000 and 38100" error:
+
+```bash
+# Install required SSL library for Unity on Linux
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+```
+
+For more detailed troubleshooting, see [Linux HTTP Port Error Troubleshooting](docs/troubleshooting/linux_http_port_error.md).
+
 You need python 3.4 or higher, 64 bit. You can create a virtual env if you like:
 ```bash
 virtualenv -p python3 env
@@ -137,4 +149,20 @@ python predict_client.py --model=../outputs/mymodel.h5
 
 **Note: pygame only needed if using mon_and_predict_server.py which gives a live camera feed during inferencing.
 
+
+## Troubleshooting
+
+### Linux: HTTP REST Server Port Error
+If you encounter the error "Error opening a HTTP REST server port between 38000 and 38100" on Linux, this is typically due to missing SSL libraries. See the detailed troubleshooting guide:
+
+[Linux HTTP Port Error Troubleshooting Guide](docs/troubleshooting/linux_http_port_error.md)
+
+**Quick Fix:**
+```bash
+wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb
+```
+
+### Other Issues
+For additional help and documentation, check the [docs](docs/) directory.
 
